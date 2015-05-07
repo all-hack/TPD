@@ -7,13 +7,17 @@
         <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
         <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="underscore-min.js"></script>
+        <script>
+          $(document).ready(function() {
+            // Execute some code here
+          });
+        </script>
     </head>
 <body>
     <script>
           window.fbAsyncInit = function() {
             FB.init({
-              appId      : '1419639185022815',
+              appId      : 1419639185022815,
               xfbml      : true,
               version    : 'v2.3'
             });
@@ -23,7 +27,7 @@
              var js, fjs = d.getElementsByTagName(s)[0];
              if (d.getElementById(id)) {return;}
              js = d.createElement(s); js.id = id;
-             js.src = "//connect.facebook.net/en_US/sdk.js";
+             js.src = "https://connect.facebook.net/en_US/sdk.js";
              fjs.parentNode.insertBefore(js, fjs);
            }(document, 'script', 'facebook-jssdk'));
     </script>
@@ -1733,23 +1737,7 @@
         }
     </script>
 
-    <script>
-    window.fbAsyncInit = function() {
-            FB.init({
-              appId      : 1419639185022815,
-              xfbml      : true,
-              version    : 'v2.3'
-            });
-          };
-
-          (function(d, s, id){
-             var js, fjs = d.getElementsByTagName(s)[0];
-             if (d.getElementById(id)) {return;}
-             js = d.createElement(s); js.id = id;
-             js.src = "https://connect.facebook.net/en_US/sdk.js";
-             fjs.parentNode.insertBefore(js, fjs);
-           }(document, 'script', 'facebook-jssdk'));
-</script>
+    
 <script type="text/javascript">
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
@@ -1815,7 +1803,7 @@
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
-    js.src = "https//connect.facebook.net/en_US/sdk.js";
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 
