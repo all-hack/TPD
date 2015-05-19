@@ -69,8 +69,13 @@
         <div class="jumbotron">
             <h1 class = "text-center">Hexaco Based Personality Inventory</h1>
             <p class = "text-center"> We will estimate your personality charateristics based on the Hexaco framework and your answers to the questions bellow</p>            
-            <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>
         </div>
+
+<!-- fb button -->
+
+    <div class = "row"> 
+        <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>
+    </div>
 
 <!-- Question 1 --><!-- Question 1 --><!-- Question 1 --><!-- Question 1 -->
 
@@ -82,11 +87,11 @@
                     <p  class = "text-center" style = "font-size: x-large" id="question">I would be quite bored by a visit to an art gallery.</p> 
                 </div>
                 <div>
-                    <button type="button" class="input, btn btn-danger btn-sm" value="1" onclick="readData(this.value);">Strongly Disagree</button>
-                    <button type="button" class="input, btn btn-warning btn-sm" value="2" onclick="readData(this.value);">Disagree</button>
-                    <button type="button" class="input, btn btn-default btn-sm" value="3" onclick="readData(this.value);">Neither Agree Nor Disagree</button>
-                    <button type="button" class="input, btn btn-success btn-sm" value="4" onclick="readData(this.value);">Agree</button>      
-                    <button type="button" class="input, btn btn-primary btn-sm" value="5" onclick="readData(this.value);">Strongly Agree</button>
+                    <button type="button" class="input, btn btn-danger btn-sm" value="1" onclick="loadDataIntoArray(this.value);">Strongly Disagree</button>
+                    <button type="button" class="input, btn btn-warning btn-sm" value="2" onclick="loadDataIntoArray(this.value);">Disagree</button>
+                    <button type="button" class="input, btn btn-default btn-sm" value="3" onclick="loadDataIntoArray(this.value);">Neither Agree Nor Disagree</button>
+                    <button type="button" class="input, btn btn-success btn-sm" value="4" onclick="loadDataIntoArray(this.value);">Agree</button>      
+                    <button type="button" class="input, btn btn-primary btn-sm" value="5" onclick="loadDataIntoArray(this.value);">Strongly Agree</button>
                 </div>
             </div><!-- q-block --><!-- q-block --><!-- q-block -->
             <button class="col-sm-1 myButtonRight" id="right" onclick="nextQuestion();">></button>
@@ -119,7 +124,6 @@
 <!-- js for managing questions and arrays --><!-- js for managing questions and arrays -->
     <script type="text/javascript">
     //store array and changes questions
-    
         fixButton();
         var currQ = 0;
         var array = [];
@@ -159,12 +163,11 @@
             if (currQ < qArray.length-1)
             {
                 currQ += 1;
-                console.log("curr"+currQ);
+                //console.log("curr"+currQ);
                 getQuestion();
                 fixButton();
             }
         }
-
         function prevQuestion()
         {
             if (currQ >= 1)
@@ -176,49 +179,40 @@
             }
             else{}
         }
-
         function getQuestion()
         {
             document.getElementById('question').innerHTML = qArray[currQ];
         }
-
-        function readData(val){
+        function loadDataIntoArray(val){
             var parsedInt = parseInt(val);
             array[currQ] = parsedInt;
             nextQuestion()
         }
-
     </script>
 
+<!-- sends data to parse --><!-- sends data to parse --><!-- sends data to parse -->
     <script type="text/javascript">
         var xhr;
         function sendResults(){
-            //alert("We just sent your answers!");
-        /*    var xhr = new XMLHttpRequest();
-            xhr.open("GET", "https://api.parse.com/1/classes/trial1", true);
-            xhr.setRequestHeader("X-Parse-Application-Id", "qpCHEHBuLw3QWfDS9ZwSRbCZMUM9fs86AMCmJXbl");
-            xhr.setRequestHeader("X-Parse-REST-API-Key", "5scsf1TfHlVRIkMQnv1XiU9VpyQR488NtMpJJ77j");
-            xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.send();*/
+                                            //alert("We just sent your answers!");
+                                        /*    var xhr = new XMLHttpRequest();
+                                            xhr.open("GET", "https://api.parse.com/1/classes/trial1", true);
+                                            xhr.setRequestHeader("X-Parse-Application-Id", "qpCHEHBuLw3QWfDS9ZwSRbCZMUM9fs86AMCmJXbl");
+                                            xhr.setRequestHeader("X-Parse-REST-API-Key", "5scsf1TfHlVRIkMQnv1XiU9VpyQR488NtMpJJ77j");
+                                            xhr.setRequestHeader("Content-Type", "application/json");
+                                            xhr.send();*/
             httpParsePost();
-            
-
-
+        
         }
 
         function log(obj) {
             $('#response').text(JSON.stringify(obj));
         }
 
-
-        function httpParseGet()
-        {
-            
-        }
-
+        //sends the data to parse 
         function httpParsePost()
         {
-             var url = "https://api.parse.com/1/classes/trial1";
+            var url = "https://api.parse.com/1/classes/trial1";
 
             xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function(){
@@ -228,7 +222,7 @@
 
                 }
                 if (xhr.readyState === 4 && xhr.status === 401){
-                    alert("closer");
+                    alert("A problem occured and we could not save your answers");
                 }
             }
 
@@ -245,12 +239,13 @@
 
             console.log(xhr.status);
             console.log(xhr.statusText);
-
         }
+
     </script>
 
     
 <script type="text/javascript">
+
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
