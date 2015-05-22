@@ -149,8 +149,8 @@
             var height = document.getElementById("question-container");
 
             // replace % value with pixels
-            width1 = getInnerWidth(width) + "px";
-            height1 = getInnerHeight(height) + "px";
+            var width1 = getInnerWidth(width) + "px";
+            var height1 = getInnerHeight(height) + "px";
 
             document.getElementById('left').style.height = height1;
             document.getElementById('right').style.height = height1;
@@ -173,7 +173,7 @@
             if (currQ >= 1)
             {    
                 currQ -= 1;
-                console.log("curr"+currQ);
+                //console.log("curr"+currQ);
                 getQuestion();
                 fixButton();
             }
@@ -215,7 +215,7 @@
             var url = "https://api.parse.com/1/classes/trial1";
 
             xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function(){
+            /*xhr.onreadystatechange = function(){
                 if (xhr.readyState === 4 && xhr.status === 200){
                     result = JSON.parse(xhr.responseText);
                     console.log(result);
@@ -224,7 +224,7 @@
                 if (xhr.readyState === 4 && xhr.status === 401){
                     alert("A problem occured and we could not save your answers");
                 }
-            }
+            }*/
 
             xhr.open("POST", url, true);
             xhr.setRequestHeader("X-Parse-Application-Id", "qpCHEHBuLw3QWfDS9ZwSRbCZMUM9fs86AMCmJXbl");
