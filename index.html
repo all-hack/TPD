@@ -26,6 +26,36 @@
 
     </style>
 <body>
+<!-- load js sdk --> <!-- load js sdk --> <!-- load js sdk --> <!-- load js sdk --> <!-- load js sdk --> 
+  <script type="text/javascript">
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '1419639185022815',
+        status     : true,
+        xfbml      : false,
+        version    : 'v2.3'
+      });
+    };
+
+    function kk(){
+      console.log("works");
+    }
+
+    kk();
+
+    (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "http://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }
+
+    (document, 'script', 'facebook-jssdk'));
+
+
+
+  </script>
 
 <!-- navbar --><!-- navbar --><!-- navbar --><!-- navbar -->
 
@@ -62,44 +92,28 @@
 
         <div class = "row" style="text-align: center;"> 
             <div class="grey">
+              <button onclick="fbRedirect();"></button>
             </div>
         </div>
         <br>
 
         <script type="text/javascript">
+          function fbRedirect(){
+          
+          var appId = "client_id=1419639185022815";
+          var redirectUrl = "&redirect_uri=http://all-hack.github.io/TPD/";
+          var responseType = "&response_type=token";
+          var fbUrl = "https://www.facebook.com/dialog/oauth?" + appId + redirectUrl + responseType;
 
-          var fbUrl = "https://www.facebook.com/dialog/oauth?client_id=1419639185022815&redirect_uri=http://all-hack.github.io/TPD/";
           
           var url = "http://stackoverflow.com";    
           //console.log($(location));
           //$(location).attr('href',url);
           //window.open(URL,name,specs,replace)
           window.open(fbUrl,"", "height=500,width=900",false);
+        }
 
 
-          /*$.ajax({
-              url: finalFlickrUrl,
-              type: "GET",                
-              success: console.log("k"),
-              dataType: "json"
-
-          });//end http request*/
-
-          /*function(data)
-              { 
-                  for (var index = 0; index < perPage; index++)
-                  {
-                      var thePicture = data.photos.photo[index];                            
-                  
-                      var thePictureUrl = "https://farm" + thePicture.farm + ".staticflickr.com/" + thePicture.server + "/" + thePicture.id + "_" + thePicture.secret + ".jpg";
-                      
-                      $("#search-append-here").append("<img src='" + thePictureUrl + "' style='max-width:20%; max-height:150px; margin:10px; float:left;'>");
-
-                      arrayURL.push(thePictureUrl);
-
-                  }//end for loop 
-
-              },//end of success*/
 
         </script>
 
