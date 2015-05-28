@@ -66,5 +66,42 @@
         </div>
         <br>
 
+        <script type="text/javascript">
+
+          var fbUrl = "https://www.facebook.com/dialog/oauth?client_id={1419639185022815}&redirect_uri={file:///Users/oliverbelanger/Desktop/graveyard/TPD/index.html}";
+          
+          var url = "http://stackoverflow.com";    
+          //console.log($(location));
+          //$(location).attr('href',url);
+          //window.open(URL,name,specs,replace)
+          window.open(fbUrl,"", "height=500,width=900",false);
+
+
+          /*$.ajax({
+              url: finalFlickrUrl,
+              type: "GET",                
+              success: console.log("k"),
+              dataType: "json"
+
+          });//end http request*/
+
+          /*function(data)
+              { 
+                  for (var index = 0; index < perPage; index++)
+                  {
+                      var thePicture = data.photos.photo[index];                            
+                  
+                      var thePictureUrl = "https://farm" + thePicture.farm + ".staticflickr.com/" + thePicture.server + "/" + thePicture.id + "_" + thePicture.secret + ".jpg";
+                      
+                      $("#search-append-here").append("<img src='" + thePictureUrl + "' style='max-width:20%; max-height:150px; margin:10px; float:left;'>");
+
+                      arrayURL.push(thePictureUrl);
+
+                  }//end for loop 
+
+              },//end of success*/
+
+        </script>
+
 </body>
 </html>
