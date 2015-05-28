@@ -44,11 +44,73 @@
     kk();
 
     (function(d, s, id){
+      console.log("d0: "+d);
+      console.log("s0: "+s);
+      console.log("id0: "+ id);
+
       var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) {return;}
+
+      console.log("d1: "+d);
+      console.log("s1: "+s);
+      console.log("id1: "+ id);
+      console.log("js0: "+js);
+      console.log("fjs: "+fjs);
+
+      if (d.getElementById(id)) 
+      {
+        console.log("d2a: "+d);
+        console.log("s2a: "+s);
+        console.log("id2a: "+ id);
+        console.log("js1a: "+js);
+        console.log("fjs1a: "+fjs);
+        console.log("d.getElementById(id)0a: " + d.getElementById(id));
+        console.log("returned");
+        return;
+      }
+
+      console.log("d2b: "+d);
+      console.log("s2b: "+s);
+      console.log("id2b: "+ id);
+      console.log("js1b: "+js);
+      console.log("fjs1b: "+fjs);
+      console.log("d.getElementById(id)0b: " + d.getElementById(id));
+
       js = d.createElement(s); js.id = id;
+
+      console.log("d3b: "+d);
+      console.log("s3b: "+s);
+      console.log("id3b: "+ id);
+      console.log("js2b: "+js);
+      console.log("fjs2b: "+fjs);
+      console.log("d.getElementById(id)1b: " + d.getElementById(id));
+      console.log("js.id0: " + js.id);
+      console.log("d.createElement(s)0: "+ d.createElement(s));
+
       js.src = "http://connect.facebook.net/en_US/sdk.js";
+
+      console.log("d4b: "+d);
+      console.log("s4b: "+s);
+      console.log("id4b: "+ id);
+      console.log("js3b: "+js);
+      console.log("fjs3b: "+fjs);
+      console.log("d.getElementById(id)2b: " + d.getElementById(id));
+      console.log("js.id1: " + js.id);
+      console.log("d.createElement(s)1: "+ d.createElement(s));
+      console.log("js.src0: "+js.src);
+      
       fjs.parentNode.insertBefore(js, fjs);
+
+      console.log("d5b: "+d);
+      console.log("s5b: "+s);
+      console.log("id5b: "+ id);
+      console.log("js4b: "+js);
+      console.log("fjs4b: "+fjs);
+      console.log("d.getElementById(id)3b: " + d.getElementById(id));
+      console.log("js.id2: " + js.id);
+      console.log("d.createElement(s)2: "+ d.createElement(s));
+      console.log("js.src1: "+js.src);
+      console.log("fjs.parentNode.insertBefore(js, fjs)0: "+fjs.parentNode.insertBefore(js, fjs));
+
     }
 
     (document, 'script', 'facebook-jssdk'));
