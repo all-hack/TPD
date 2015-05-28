@@ -27,38 +27,57 @@
     </style>
 <body>
 <!-- load js sdk --> <!-- load js sdk --> <!-- load js sdk --> <!-- load js sdk --> <!-- load js sdk --> 
+
   <script type="text/javascript">
+    //initiates the fb login and passes your parameters 
     window.fbAsyncInit = function() {
       FB.init({
         appId      : '1419639185022815',
-        //status     : true,
         xfbml      : false,
         version    : 'v2.3'
       });
     };
 
-    function kk(){
-      console.log("works");
-    }
-
-    kk();
-
+    //a annonymous function with arguments that are passed below
     (function(d, s, id){
-      console.log("d0: "+d);
+      //d is the first argument passed below the function. in this case it is the current document object. 
+      //s is the second argument passed below the function. in this case it is the string "script"
+      //id is the third argument passed below the function. in this case it is the string "facebook-jssdk"
+      
+      console.log("d0: "+d.URL);
       console.log("s0: "+s);
       console.log("id0: "+ id);
 
+      //creates the js variable and initializes the fjs variable to the first tag s in the html document d
+        //returns a htmlCollection object that is populated with tags s, elements are accessed like an array
+        //if s is not a valid tag fjs will be undefined 
+        //if s is not the string "script" then it will be passed the wrong tag and not work. 
       var js, fjs = d.getElementsByTagName(s)[0];
 
-      console.log("d1: "+d);
+      console.log("d1: "+d.URL);
       console.log("s1: "+s);
       console.log("id1: "+ id);
       console.log("js0: "+js);
       console.log("fjs: "+fjs);
+      console.log("d.getElementsByTagName"+ d.getElementsByTagName(s).item(0).src);
+      console.log("d.getElementsByTagName"+ d.getElementsByTagName(s).item(1).src);
+      console.log("d.getElementsByTagName"+ d.getElementsByTagName(s).item(2).src);
+      console.log("d.getElementsByTagName2.type"+ d.getElementsByTagName(s).item(2).type);
+      console.log("d.getElementsByTagName3.src"+ d.getElementsByTagName(s).item(3).src);
+      console.log("d.getElementsByTagName3.type "+ d.getElementsByTagName(s).item(3).type);
+      console.log("d.getElementsByTagName3.htmlFor "+ d.getElementsByTagName(s).item(3).htmlFor);
+      console.log("d.getElementsByTagName3.event "+ d.getElementsByTagName(s).item(3).event);
+      console.log("d.getElementsByTagName3.charset "+ d.getElementsByTagName(s).item(3).charset);
+      console.log("d.getElementsByTagName3.defer "+ d.getElementsByTagName(s).item(3).defer);
+      console.log("d.getElementsByTagName3.crossOrigin "+ d.getElementsByTagName(s).item(3).crossOrigin);
+      //console.log("d.getElementsByTagName3.text "+ d.getElementsByTagName(s).item(3).text);
+
+      console.log("d.getElementsByTagName"+ d.getElementsByTagName(s).length);
+      console.log("fjs.src: "+ fjs.src);
 
       if (d.getElementById(id)) 
       {
-        console.log("d2a: "+d);
+        console.log("d2a: "+d.URL);
         console.log("s2a: "+s);
         console.log("id2a: "+ id);
         console.log("js1a: "+js);
@@ -68,43 +87,62 @@
         return;
       }
 
-      console.log("d2b: "+d);
+      console.log("d2b: "+d.URL);
       console.log("s2b: "+s);
       console.log("id2b: "+ id);
       console.log("js1b: "+js);
       console.log("fjs1b: "+fjs);
+      console.log("fjs1b.src: "+ fjs.src);
       console.log("d.getElementById(id)0b: " + d.getElementById(id));
 
       js = d.createElement(s); js.id = id;
 
-      console.log("d3b: "+d);
+      console.log("d3b: "+d.URL);
       console.log("s3b: "+s);
       console.log("id3b: "+ id);
       console.log("js2b: "+js);
       console.log("fjs2b: "+fjs);
       console.log("d.getElementById(id)1b: " + d.getElementById(id));
+      console.log("js0: " + js);
       console.log("js.id0: " + js.id);
-      console.log("d.createElement(s)0: "+ d.createElement(s));
+      console.log("js.type0: " + js.type);
+      console.log("js.src0: " + js.src);
+      console.log("js.htmlFor0: " + js.htmlFor);
+      console.log("js.event0: " + js.event);
+      console.log("js.text0: " + js.text);
+      console.log("js.charset0: " + js.charset);
+
+
+      //console.log("d.createElement(s)0.type: "+ d.createElement(s).type);
+      //console.log("d.createElement(s)0.src: "+ d.createElement(s).src);
+      //console.log("d.createElement(s)0.htmlFor: "+ d.createElement(s).htmlFor);
+
 
       js.src = "http://connect.facebook.net/en_US/sdk.js";
 
-      console.log("d4b: "+d);
+      console.log("d4b: "+d.URL);
       console.log("s4b: "+s);
       console.log("id4b: "+ id);
       console.log("js3b: "+js);
+      console.log("js.id3: " + js.id);
+      console.log("js.src3: "+js.src);
       console.log("fjs3b: "+fjs);
+      console.log("fjs.id3: " + fjs.id);
+      console.log("fjs.src3: "+fjs.src);
       console.log("d.getElementById(id)2b: " + d.getElementById(id));
-      console.log("js.id1: " + js.id);
-      console.log("d.createElement(s)1: "+ d.createElement(s));
-      console.log("js.src0: "+js.src);
+      console.log("js.id3: " + js.id);
+      console.log("js.src3: "+js.src);
       
       fjs.parentNode.insertBefore(js, fjs);
 
-      console.log("d5b: "+d);
+      console.log("d5b: "+d.URL);
       console.log("s5b: "+s);
       console.log("id5b: "+ id);
       console.log("js4b: "+js);
+      console.log("js.src4: "+js.src);
       console.log("fjs4b: "+fjs);
+      console.log("fjs.src4: "+fjs.src);
+
       console.log("d.getElementById(id)3b: " + d.getElementById(id));
       console.log("js.id2: " + js.id);
       console.log("d.createElement(s)2: "+ d.createElement(s));
@@ -112,8 +150,8 @@
       console.log("fjs.parentNode.insertBefore(js, fjs)0: "+fjs.parentNode.insertBefore(js, fjs));
 
     }
-
-    (document, 'script2', 'facebook-jssdk'));
+    //the arguments that will be passed to the annonymous function 
+    (document, 'script', 'facebook-jssdk'));
 
 
 
