@@ -73,7 +73,7 @@
       fbSDKjs = yourDocument.createElement(scriptTag); fbSDKjs.id = arbritaryId;
 
       //assigns the src attribute of the fbSDKjs scriptelement to the actual facebook sdk.js
-      fbSDKjs.src = "http://connect.facebook.net/en_US/sdk.js";
+      fbSDKjs.src = "//connect.facebook.net/en_US/sdk.js";
       //fbSDKjs is now an empty script with a src towards the facebook sdk and an id "facebook-jssdk"
       
       //gets the parent of the firstLinkedScript element, this parent is the HEAD element. 
@@ -152,11 +152,7 @@
             }
           }
           
-          //retrieves the login status of the end user, if the user is logged in to FB it will detect it
-          FB.getLoginStatus(function(response) {
-            //handles the callback from the response, the response is a JSON object 
-            statusChangeCallback(response);
-          });
+
 
 
         </script>
