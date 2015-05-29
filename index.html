@@ -38,10 +38,10 @@
       });
 
       //this had to be in the fbAsyncInit function otherwise the FB object is not recognized 
-      FB.getLoginStatus(function(response) {
+   /*   FB.getLoginStatus(function(response) {
             //handles the callback from the response, the response is a JSON object 
             statusChangeCallback(response);
-      });
+      });*/
     };// end of the fbAsyncInit function
 
     //a annonymous function with arguments that are passed below
@@ -147,10 +147,10 @@
               console.log("log into facebook!");
             }
           }
-          function checkLoginState() {
+          /*function checkLoginState() {
             FB.getLoginStatus(function(response) {
             statusChangeCallback(response);
-          });
+          });*/
 
 
         </script>
