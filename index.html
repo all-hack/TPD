@@ -36,12 +36,6 @@
         version    : 'v2.3'
       });
 
-      FB.getLoginStatus(function(response) {
-              //handles the callback from the response, the response is a JSON object 
-              statusChangeCallback(response);
-      });
-
-
     };
 
     //a annonymous function with arguments that are passed below
@@ -128,6 +122,11 @@
         <br>
 
         <script type="text/javascript">
+
+          FB.getLoginStatus(function(response) {
+            //handles the callback from the response, the response is a JSON object 
+            statusChangeCallback(response);
+          });
 
           //this called with the response from FB from the check login status function 
           function statusChangeCallback(response) {
