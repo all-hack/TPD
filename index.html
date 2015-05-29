@@ -26,6 +26,7 @@
 
     </style>
 <body>
+  <div id="fb-root"></div>
 <!-- load js sdk --> <!-- load js sdk --> <!-- load js sdk --> <!-- load js sdk --> <!-- load js sdk --> 
   <script type="text/javascript">
     //initiates the fb login and passes your parameters 
@@ -71,7 +72,7 @@
       fbSDKjs = yourDocument.createElement(scriptTag); fbSDKjs.id = arbritaryId;
 
       //assigns the src attribute of the fbSDKjs scriptelement to the actual facebook sdk.js
-      fbSDKjs.src = "//connect.facebook.net/en_US/sdk.js";
+      fbSDKjs.src = "https://connect.facebook.net/en_US/sdk.js";
       //fbSDKjs is now an empty script with a src towards the facebook sdk and an id "facebook-jssdk"
       
       //gets the parent of the firstLinkedScript element, this parent is the HEAD element. 
