@@ -36,6 +36,11 @@
         version    : 'v2.3'
       });
 
+      FB.getLoginStatus(function(response) {
+              //handles the callback from the response, the response is a JSON object 
+              statusChangeCallback(response);
+      });
+
 
     };
 
@@ -123,8 +128,6 @@
         <br>
 
         <script type="text/javascript">
-          
-          
 
           //this called with the response from FB from the check login status function 
           function statusChangeCallback(response) {
@@ -148,12 +151,6 @@
                 'into Facebook.';
             }
           }
-          
-                FB.getLoginStatus(function(response) {
-            //handles the callback from the response, the response is a JSON object 
-            statusChangeCallback(response);
-      });
-
 
 
         </script>
