@@ -10,35 +10,78 @@
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/questions.js"></script>
     </head>
+    <style type="text/css">
+      .grey{
+        background-color: whitesmoke;
+        width: 80%;
+        height: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        border-style: solid;
+        border-color: red;
+
+
+
+      }
+
+    </style>
 <body>
+<!-- load js sdk --> <!-- load js sdk --> <!-- load js sdk --> <!-- load js sdk --> <!-- load js sdk --> 
+  <script type="text/javascript">
+    //initiates the fb login and passes your parameters 
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '1419639185022815',
+        xfbml      : false,
+        version    : 'v2.3'
+      });
 
+      //this had to be in the fbAsyncInit function otherwise the FB object is not recognized 
+      FB.getLoginStatus(function(response) {
+            //handles the callback from the response, the response is a JSON object 
+            statusChangeCallback(response);
+      });
+    };// end of the fbAsyncInit function
 
-    <script>
-          window.fbAsyncInit = function() {
-            FB.init({
-              appId      : 1419639185022815,
-              xfbml      : true,
-              version    : 'v2.3'
-            });
-          };
+    //a annonymous function with arguments that are passed below
+    (function(yourDocument, scriptTag, arbritaryId){
+      //yourDocument is the first argument passed below the function. in this case it is the current document object. 
+      //scriptTag is the second argument passed below the function. in this case it is the string "script"
+      //arbritaryId is the third argument passed below the function. in this case it is the string "facebook-jssdk"      
 
-          (function(d, s, id){
-             var js, fjs = d.getElementsByTagName(s)[0];
-             if (d.getElementById(id)) {return;}
-             js = d.createElement(s); js.id = id;
-             js.src = "https://connect.facebook.net/en_US/sdk.js";
-             fjs.parentNode.insertBefore(js, fjs);
-           }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=1419639185022815";
-          fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-    </script>
+      //Tech: 
+        //getElementByTagName returns an htmlCollection object that is populated with tag elements, the value of scriptTag determines the type of tag, elements are accessed like an array
+
+        //creates the fbSDKjs variable and initializes the firstLinkedScript variable to the 0 element in the htmlCollection
+
+        //if scriptTag is not a valid tag firstLinkedScript will be undefined 
+        //if scriptTag is not the string "script" then it will be passed the wrong tag and not work. 
+      
+      //English: 
+        //essentially it assigns the variable firstLinkedScript to the first script linked in the html document yourDocument
+        //it also creates but does not initialize the fbSDKjs variable 
+      var fbSDKjs, firstLinkedScript = yourDocument.getElementsByTagName(scriptTag)[0];
+
+      
+      //searches the variable yourDocument for an element who's id is the value of arbritaryId which in this case is ("facebook-jssdk")
+      //if it finds an element with an id attribute of arbritaryId then it assumes you have already linked the sdk and returns stopping the function 
+      if (yourDocument.getElementById(arbritaryId)) {return;}
+        
+      //creates a element of type scriptTag, which in this case is a script tag element, and assigns the id attribute of this element to be the value of the arbritaryId variable
+      fbSDKjs = yourDocument.createElement(scriptTag); fbSDKjs.id = arbritaryId;
+
+      //assigns the src attribute of the fbSDKjs scriptelement to the actual facebook sdk.js
+      fbSDKjs.src = "//connect.facebook.net/en_US/sdk.js";
+      //fbSDKjs is now an empty script with a src towards the facebook sdk and an id "facebook-jssdk"
+      
+      //gets the parent of the firstLinkedScript element, this parent is the HEAD element. 
+      //insertBefore function inserts the first argument(fbSDKjs) right before the second argument(firstLinkedScript);
+      //we have to call the function from firstLinkedScript parent node because the element is inserted as a child of the node that calls the function, thus would not work if the caller was not the parent of the referenced node (second argument)
+      firstLinkedScript.parentNode.insertBefore(fbSDKjs, firstLinkedScript);
+    }
+    //the arguments that will be passed to the annonymous function 
+    (document, 'script', 'facebook-jssdk'));
+  </script>
 
 <!-- navbar --><!-- navbar --><!-- navbar --><!-- navbar -->
 
@@ -74,258 +117,41 @@
 <!-- fb button -->
 
         <div class = "row" style="text-align: center;"> 
-            <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>
-        </div>
-        <br>
+            <div class="grey">
 
-<!-- Question 1 --><!-- Question 1 --><!-- Question 1 --><!-- Question 1 -->
-
-        <div class = "row c-block" style="height:140px"> 
-            <div class= "center-block b-block">
-                <button class="col-sm-1 myButtonLeft" id="left" onclick="prevQuestion();"><</button>
-                <div class = "center-block q-block borderb col-sm-10" id="question-container">
-                    <div style="height: 80%;">
-                        <p  class = "text-center" style = "font-size: x-large" id="question">I would be quite bored by a visit to an art gallery.</p> 
-                    </div>
-                    <div>
-                        <button type="button" class="input, btn btn-danger btn-sm" value="1" onclick="loadDataIntoArray(this.value);">Strongly Disagree</button>
-                        <button type="button" class="input, btn btn-warning btn-sm" value="2" onclick="loadDataIntoArray(this.value);">Disagree</button>
-                        <button type="button" class="input, btn btn-default btn-sm" value="3" onclick="loadDataIntoArray(this.value);">Neither Agree Nor Disagree</button>
-                        <button type="button" class="input, btn btn-success btn-sm" value="4" onclick="loadDataIntoArray(this.value);">Agree</button>      
-                        <button type="button" class="input, btn btn-primary btn-sm" value="5" onclick="loadDataIntoArray(this.value);">Strongly Agree</button>
-                    </div>
-                </div><!-- q-block --><!-- q-block --><!-- q-block -->
-                <button class="col-sm-1 myButtonRight" id="right" onclick="nextQuestion();">></button>
-            </div><!-- b-block --><!-- b-block --><!-- b-block --><!-- b-block -->
-        </div><!-- c-block --><!-- c-block --><!-- c-block --> <!-- c-block -->   
-        
-
-<!-- send results --><!-- send results --><!-- send results --> 
-
-        <div class = "row" style =" padding-top: 1%; padding-bottom: 1%"> <!-- Question 100 -->
-            <div class = "center-block" style = "min-width: 30%; max-width: 52.8%; text-align:center;">
-                <p class = "text-center"  style = "font-size: x-large">Send your results!
-                </p>       
-                <button type="button" class="btn btn-primary btn-lg" onclick="sendResults();">send!</button>
+                <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>
             </div>
-        </div>  
-
-        <br>
-        <br>
-
-        <hr>
-        <div class="row">            
-            <footer class="text-center">
-                <p>&copy; Copyright 2013 Tutorial Republic</p>
-            </footer>            
         </div>
-    </div> <!-- end container -->
+        <br>
 
-<!-- js for managing questions and arrays --><!-- js for managing questions and arrays -->
-    <script type="text/javascript">
-    //store array and changes questions
-        fixButton();
-        var currQ = 0;
-        var array = [];
-        var result;
+        <script type="text/javascript">
 
-        //grabs the array containign the answers to the questions
-        function grabArray()
-        {
-            return array;
-        }
-
-
-        //makes the button sizes match the element 
-        function getInnerWidth(elem) {
-            return parseFloat(window.getComputedStyle(elem).width);
-        }
-        function getInnerHeight(elem){
-            return parseFloat(window.getComputedStyle(elem).height);
-        }
-        function fixButton()
-        {
-            var width = document.getElementById("question-container");
-            var height = document.getElementById("question-container");
-
-            // replace % value with pixels
-            var width1 = getInnerWidth(width) + "px";
-            var height1 = getInnerHeight(height) + "px";
-
-            document.getElementById('left').style.height = height1;
-            document.getElementById('right').style.height = height1;
-        }
-
-        //controls the question navigation 
-        function nextQuestion()
-        {
-
-            if (currQ < qArray.length-1)
-            {
-                currQ += 1;
-                //console.log("curr"+currQ);
-                getQuestion();
-                fixButton();
+          //this called with the response from FB from the check login status function 
+          function statusChangeCallback(response) {
+            console.log('statusChangeCallback');
+            console.log(response);
+            // The response object is returned with a status field that lets the
+            // app know the current login status of the person.
+            // Full docs on the response object can be found in the documentation
+            // for FB.getLoginStatus().
+            if (response.status === 'connected') {
+              // Logged into your app and Facebook.
+              console.log("your in!");
+            } else if (response.status === 'not_authorized') {
+              // The person is logged into Facebook, but not your app.
+              console.log("log into the app!");
+            } else {
+              // The person is not logged into Facebook, so we're not sure if
+              // they are logged into this app or not.
+              console.log("log into facebook!");
             }
-        }
-        function prevQuestion()
-        {
-            if (currQ >= 1)
-            {    
-                currQ -= 1;
-                //console.log("curr"+currQ);
-                getQuestion();
-                fixButton();
-            }
-            else{}
-        }
-        function getQuestion()
-        {
-            document.getElementById('question').innerHTML = qArray[currQ];
-        }
-        function loadDataIntoArray(val){
-            var parsedInt = parseInt(val);
-            array[currQ] = parsedInt;
-            nextQuestion()
-        }
-    </script>
-
-<!-- sends data to parse --><!-- sends data to parse --><!-- sends data to parse -->
-    <script type="text/javascript">
-        var xhr;
-        function sendResults(){
-                                            //alert("We just sent your answers!");
-                                        /*    var xhr = new XMLHttpRequest();
-                                            xhr.open("GET", "https://api.parse.com/1/classes/trial1", true);
-                                            xhr.setRequestHeader("X-Parse-Application-Id", "qpCHEHBuLw3QWfDS9ZwSRbCZMUM9fs86AMCmJXbl");
-                                            xhr.setRequestHeader("X-Parse-REST-API-Key", "5scsf1TfHlVRIkMQnv1XiU9VpyQR488NtMpJJ77j");
-                                            xhr.setRequestHeader("Content-Type", "application/json");
-                                            xhr.send();*/
-            httpParsePost();
-        
-        }
-
-        function log(obj) {
-            $('#response').text(JSON.stringify(obj));
-        }
-
-        //sends the data to parse 
-        function httpParsePost()
-        {
-            var url = "https://api.parse.com/1/classes/trial1";
-
-            xhr = new XMLHttpRequest();
-            /*xhr.onreadystatechange = function(){
-                if (xhr.readyState === 4 && xhr.status === 200){
-                    result = JSON.parse(xhr.responseText);
-                    console.log(result);
-
-                }
-                if (xhr.readyState === 4 && xhr.status === 401){
-                    alert("A problem occured and we could not save your answers");
-                }
-            }*/
-
-            xhr.open("POST", url, true);
-            xhr.setRequestHeader("X-Parse-Application-Id", "qpCHEHBuLw3QWfDS9ZwSRbCZMUM9fs86AMCmJXbl");
-            xhr.setRequestHeader("X-Parse-REST-API-Key", "5scsf1TfHlVRIkMQnv1XiU9VpyQR488NtMpJJ77j");
-            xhr.setRequestHeader("Content-Type", "application/json");
-
-            var array = grabArray();
-
-            var data = JSON.stringify({ "array": array});
-
-            xhr.send(data);
-
-            console.log(xhr.status);
-            console.log(xhr.statusText);
-        }
-
-    </script>
-
-    
-<script type="text/javascript">
-
-  // This is called with the results from from FB.getLoginStatus().
-  function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
-    // Full docs on the response object can be found in the documentation
-    // for FB.getLoginStatus().
-    if (response.status === 'connected') {
-      // Logged into your app and Facebook.
-      testAPI();
-    } else if (response.status === 'not_authorized') {
-      // The person is logged into Facebook, but not your app.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
-    } else {
-      // The person is not logged into Facebook, so we're not sure if
-      // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
-    }
-  }
-
-  // This function is called when someone finishes with the Login
-  // Button.  See the onlogin handler attached to it in the sample
-  // code below.
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
-
-  window.fbAsyncInit = function() {
-  FB.init({
-    appId      : 1419639185022815,
-    cookie     : true,  // enable cookies to allow the server to access 
-                        // the session
-    xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.3' // use version 2.2
-  });
-
-  // Now that we've initialized the JavaScript SDK, we call 
-  // FB.getLoginStatus().  This function gets the state of the
-  // person visiting this page and can return one of three states to
-  // the callback you provide.  They can be:
-  //
-  // 1. Logged into your app ('connected')
-  // 2. Logged into Facebook, but not your app ('not_authorized')
-  // 3. Not logged into Facebook and can't tell if they are logged into
-  //    your app or not.
-  //
-  // These three cases are handled in the callback function.
-
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-
-  };
-
-  // Load the SDK asynchronously
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
-  function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
-    });
-  }
-</script>
+          }
+          function checkLoginState() {
+            FB.getLoginStatus(function(response) {
+            statusChangeCallback(response);
+          });
 
 
+        </script>
 </body>
 </html>
