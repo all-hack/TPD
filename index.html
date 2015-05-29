@@ -36,13 +36,13 @@
         version    : 'v2.3'
       });
 
-
+      //this had to be in the fbAsyncInit function otherwise the FB object is not recognized 
       FB.getLoginStatus(function(response) {
             //handles the callback from the response, the response is a JSON object 
             statusChangeCallback(response);
       });
 
-    };
+    };// end of the fbAsyncInit function
 
     //a annonymous function with arguments that are passed below
     (function(yourDocument, scriptTag, arbritaryId){
@@ -139,7 +139,7 @@
             // for FB.getLoginStatus().
             if (response.status === 'connected') {
               // Logged into your app and Facebook.
-              testAPI();
+              console.log("your in!");
             } else if (response.status === 'not_authorized') {
               // The person is logged into Facebook, but not your app.
               document.getElementById('status').innerHTML = 'Please log ' +
