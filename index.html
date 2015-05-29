@@ -122,7 +122,9 @@
 
         <div class = "row" style="text-align: center;"> 
             <div class="grey">
-              
+                <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+                </fb:login-button>
+                <!--<div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>-->
             </div>
         </div>
         <br>
@@ -152,6 +154,5 @@
 
 
         </script>
-
 </body>
 </html>
