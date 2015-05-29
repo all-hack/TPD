@@ -27,7 +27,6 @@
     </style>
 <body>
 <!-- load js sdk --> <!-- load js sdk --> <!-- load js sdk --> <!-- load js sdk --> <!-- load js sdk --> 
-
   <script type="text/javascript">
     //initiates the fb login and passes your parameters 
     window.fbAsyncInit = function() {
@@ -79,9 +78,6 @@
     }
     //the arguments that will be passed to the annonymous function 
     (document, 'script', 'facebook-jssdk'));
-
-
-
   </script>
 
 <!-- navbar --><!-- navbar --><!-- navbar --><!-- navbar -->
@@ -119,26 +115,41 @@
 
         <div class = "row" style="text-align: center;"> 
             <div class="grey">
-              <button onclick="fbRedirect();"></button>
+              
             </div>
         </div>
         <br>
 
         <script type="text/javascript">
-          function fbRedirect(){
           
-          var appId = "client_id=1419639185022815";
-          var redirectUrl = "&redirect_uri=http://all-hack.github.io/TPD/";
-          var responseType = "&response_type=token";
-          var fbUrl = "https://www.facebook.com/dialog/oauth?" + appId + redirectUrl + responseType;
+          //retrieves the login status of the end user, if the user is logged in to FB it will detect it
+          FB.getLoginStatus(function(response) {
+            //handles the callback from the response, the response is a JSON object 
+            statusChangeCallback(response);
+          });
 
-          
-          var url = "http://stackoverflow.com";    
-          //console.log($(location));
-          //$(location).attr('href',url);
-          //window.open(URL,name,specs,replace)
-          window.open(fbUrl,"", "height=500,width=900",false);
-        }
+          //this called with the response from FB from the check login status function 
+          function statusChangeCallback(response) {
+            console.log('statusChangeCallback');
+            console.log(response);
+            // The response object is returned with a status field that lets the
+            // app know the current login status of the person.
+            // Full docs on the response object can be found in the documentation
+            // for FB.getLoginStatus().
+            if (response.status === 'connected') {
+              // Logged into your app and Facebook.
+              testAPI();
+            } else if (response.status === 'not_authorized') {
+              // The person is logged into Facebook, but not your app.
+              document.getElementById('status').innerHTML = 'Please log ' +
+                'into this app.';
+            } else {
+              // The person is not logged into Facebook, so we're not sure if
+              // they are logged into this app or not.
+              document.getElementById('status').innerHTML = 'Please log ' +
+                'into Facebook.';
+            }
+          }
 
 
 
