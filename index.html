@@ -122,11 +122,7 @@
 
         <script type="text/javascript">
           
-          //retrieves the login status of the end user, if the user is logged in to FB it will detect it
-          FB.getLoginStatus(function(response) {
-            //handles the callback from the response, the response is a JSON object 
-            statusChangeCallback(response);
-          });
+          
 
           //this called with the response from FB from the check login status function 
           function statusChangeCallback(response) {
@@ -150,7 +146,11 @@
                 'into Facebook.';
             }
           }
-
+          //retrieves the login status of the end user, if the user is logged in to FB it will detect it
+          FB.getLoginStatus(function(response) {
+            //handles the callback from the response, the response is a JSON object 
+            statusChangeCallback(response);
+          });
 
 
         </script>
