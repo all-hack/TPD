@@ -148,10 +148,7 @@
             } else {              
               // The person is not logged into Facebook, so we're not sure if
               // they are logged into this app or not.
-              console.log("log into facebook!");   
-              FB.login(function (secondResponse){                                              
-                  statusChangeCallback(secondResponse);                  
-                }, {scope:"public_profile, email"});
+              console.log("log into facebook!");                 
             }
           }
 
@@ -163,7 +160,7 @@
               
               //
               statusChangeCallback(response);
-              /*
+              
               if (response.status === "not_authorized")
               {
                 FB.login(function (secondResponse){                                              
@@ -175,7 +172,7 @@
                 FB.login(function (secondResponse){                                  
                   statusChangeCallback(secondResponse);                  
                 }, {scope:"public_profile, email"});
-              }             */
+              }             
             });
 
           } 
