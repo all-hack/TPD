@@ -130,7 +130,7 @@
             <div class="grey">
 
 <!--                <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>-->
-                    <fb:login-button data-scope="public_profile, email" data-size="xlarge" onlogin="checkLoginState();">
+                    <fb:login-button data-scope="public_profile, email" data-size="xlarge" onlogin="FB.getLoginStatus();">
                     </fb:login-button>
                     <!--<fb:login-button>
                     </fb:login-button>-->
@@ -150,28 +150,22 @@
             // for FB.getLoginStatus().
             if (response.status === 'connected') {
               // Logged into your app and Facebook.
-              console.log("your in!");   
-              return response.status;              
-
+              console.log("your in!");    
             } else if (response.status === 'not_authorized') {
               // The person is logged into Facebook, but not your app.
               console.log("log into the app!");
-              return response.status;
             } else {
               // The person is not logged into Facebook, so we're not sure if
               // they are logged into this app or not.
               console.log("log into facebook!");   
-              return response.status;                     
-
             }
           }
 
 
           function checkLoginState() {
-            FB.getLoginStatus(function(response) {
-
-              console.log(response);
-              var status = statusChangeCallback(response);
+            FB.getLoginStatus(function(response) {              
+              
+              statusChangeCallback(response);
               
               // The FB object cannot be accessed outside the FB.inti scope so we must call the FB.login 
               // from the status callback initiated by FB.getLoginStatus. We will have to do all the same checking we did in 
@@ -181,9 +175,9 @@
               // Since we only want the login logic 
               // to be initiated if the user is not logged in to Facebook we call FB.login if the
               // response.status is unknown
-              if (status === "unknown"){
-                FB.login(function (response){                                  
-                  statusChangeCallback(response);                  
+              if (response.status === "unknown"){
+                FB.login(function (secondResponse){                                  
+                  statusChangeCallback(secondResponse);                  
                 }, {scope:"public_profile, email"})
               }             
             });
