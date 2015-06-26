@@ -130,9 +130,9 @@
             <div class="grey">
 
 <!--                <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>-->
-                    <!--<fb:login-button scope="public_profile, email" data-size="xlarge" onlogin="checkLoginState();">
-                    </fb:login-button>-->
-                    <button onclick="checkLoginState();">Log in with FaceBook!</button>
+                    <fb:loginbutton scope="public_profile, email" data-size="xlarge" onlogin="checkLoginState();">
+                    </fb:loginbutton>
+                    <!--<button onclick="checkLoginState();">Log in with FaceBook!</button>-->
 
             </div>
         </div>
@@ -150,10 +150,7 @@
             // for FB.getLoginStatus().
             if (response.status === 'connected') {
               // Logged into your app and Facebook.
-              console.log("your in!");
-
-              FB.login(function (response){
-                }, {scope:"public_profile, email"});     
+              console.log("your in!");                 
 
             } else if (response.status === 'not_authorized') {
               // The person is logged into Facebook, but not your app.
@@ -162,13 +159,22 @@
               // The person is not logged into Facebook, so we're not sure if
               // they are logged into this app or not.
               console.log("log into facebook!");
+              
+              // The FB object cannot be accessed outside the FB.inti scope so we must call the FB.login 
+              // from the status callback initiated by FB.getLoginStatus. Since we only want the login logic 
+              // to be initiated if the user is not logged in to Facebook we call FB.login if the
+              // response.status is unknown
+              FB.login(function (response){
+                
+              }, {scope:"public_profile, email"});
+
             }
           }
 
 
           function checkLoginState() {
             FB.getLoginStatus(function(response) {
-            statusChangeCallback(response);
+              statusChangeCallback(response);
             });
           } 
           
