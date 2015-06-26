@@ -152,30 +152,46 @@
             }
           }
 
+          function checkLoginState() {
+            
+            FB.getLoginStatus(function(response) {              
+            }
 
+          }
+/*
           function checkLoginState() {
 
-            //here we call the FB.getLoginStatus function that we put in the FB.init() potion of our app
+            // here we call the FB.getLoginStatus function that we put in the FB.init() portion of our app 
+            // this will retrieve the login status, and send the response through our statusChangeCallback() function
             FB.getLoginStatus(function(response) {              
               
-              
-              //statusChangeCallback(response);
-              
+              // if the response is not_authorized then we launch the Login logic so that the user may give our app the 
+              // appropriate permissions 
               if (response.status === "not_authorized")
               {
+
                 FB.login(function (secondResponse){                                              
+                  //we call the statusChangeCallback() function again to handle the response that the Login logic generates 
                   statusChangeCallback(secondResponse);                  
-                }, {scope:"public_profile, email"});
+                }, 
+                //we pass the permissions that we request from the end user, which are the public_profile and email
+                {scope:"public_profile, email"});
               }
               else{}
+
+              // if the response is unknown then we know that the end user is not logged into Facebook, so we launch the
+              // Login logic so that the user may login to Facebook and give our app appropriate permissions they have not yet
               if (response.status === "unknown"){
-                FB.login(function (secondResponse){                                  
+                FB.login(function (secondResponse){   
+                  //we call the statusChangeCallback() function again to handle the response that the Login logic generates 
                   statusChangeCallback(secondResponse);                  
-                }, {scope:"public_profile, email"});
+                },
+                //we pass the permissions that we request from the end user, which are the public_profile and email
+                {scope:"public_profile, email"});
               }             
             });
 
-          } 
+          } */
           
                
 
