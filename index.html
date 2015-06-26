@@ -130,11 +130,11 @@
             <div class="grey">
 
 <!--                <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>-->
-                    <fb:login-button data-scope="public_profile, email" data-size="xlarge" onlogin="FB.getLoginStatus();">
-                    </fb:login-button>
+                    <!--<fb:login-button data-scope="public_profile, email" data-size="xlarge" onlogin="FB.getLoginStatus();">
+                    </fb:login-button>-->
                     <!--<fb:login-button>
                     </fb:login-button>-->
-                    <!--<button onclick="checkLoginState();">Log in with FaceBook!</button>-->
+                    <button onclick="checkLoginState();">Log in with FaceBook!</button>
 
             </div>
         </div>
@@ -175,10 +175,17 @@
               // Since we only want the login logic 
               // to be initiated if the user is not logged in to Facebook we call FB.login if the
               // response.status is unknown
+              if (response.status === "not_authorized")
+              {
+                FB.login(function (secondResponse){                                              
+                  statusChangeCallback(secondResponse);                  
+                }, {scope:"public_profile, email"});
+              }
+              else{}
               if (response.status === "unknown"){
                 FB.login(function (secondResponse){                                  
                   statusChangeCallback(secondResponse);                  
-                }, {scope:"public_profile, email"})
+                }, {scope:"public_profile, email"});
               }             
             });
 
