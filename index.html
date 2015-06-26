@@ -170,15 +170,19 @@
           function checkLoginState() {
             FB.getLoginStatus(function(response) {
 
+              console.log(response)
               var status = statusChangeCallback(response);
               
               // The FB object cannot be accessed outside the FB.inti scope so we must call the FB.login 
-              // from the status callback initiated by FB.getLoginStatus. Since we only want the login logic 
+              // from the status callback initiated by FB.getLoginStatus. We will have to do all the same checking we did in 
+              // statusChangeCallback
+
+
+               Since we only want the login logic 
               // to be initiated if the user is not logged in to Facebook we call FB.login if the
               // response.status is unknown
               if (status === "unknown"){
-                FB.login(function (response){                
-                  //console.log(response);
+                FB.login(function (response){                                  
                   statusChangeCallback(response);                  
                 }, {scope:"public_profile, email"})
               }             
