@@ -170,7 +170,7 @@
           function checkLoginState() {
             FB.getLoginStatus(function(response) {
 
-              console.log(response)
+              console.log(response);
               var status = statusChangeCallback(response);
               
               // The FB object cannot be accessed outside the FB.inti scope so we must call the FB.login 
