@@ -152,8 +152,8 @@
               // Logged into your app and Facebook.
               console.log("your in!");
 
-              //FB.login(function (response){
-               // }, {scope:"public_profile, email"});     
+              FB.login(function (response){
+                }, {scope:"public_profile, email"});     
 
             } else if (response.status === 'not_authorized') {
               // The person is logged into Facebook, but not your app.
