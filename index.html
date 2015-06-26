@@ -42,15 +42,6 @@
             //handles the callback from the response, the response is a JSON object 
             statusChangeCallback(response);
       });
-/*
-     function checkLoginState() {
-            console.log("fkojosfoi")
-            FB.getLoginStatus(function(response) {
-            statusChangeCallback(response);
-            });
-          } */
-
-
     };// end of the fbAsyncInit function
 
     //a annonymous function with arguments that are passed below
@@ -154,27 +145,25 @@
             } else if (response.status === 'not_authorized') {
               // The person is logged into Facebook, but not your app.
               console.log("log into the app!");
-            } else {
+            } else {              
               // The person is not logged into Facebook, so we're not sure if
               // they are logged into this app or not.
               console.log("log into facebook!");   
+              FB.login(function (secondResponse){                                              
+                  statusChangeCallback(secondResponse);                  
+                }, {scope:"public_profile, email"});
             }
           }
 
 
           function checkLoginState() {
+
+            //here we call the FB.getLoginStatus function that we put in the FB.init() potion of our app
             FB.getLoginStatus(function(response) {              
               
+              //
               statusChangeCallback(response);
-              
-              // The FB object cannot be accessed outside the FB.inti scope so we must call the FB.login 
-              // from the status callback initiated by FB.getLoginStatus. We will have to do all the same checking we did in 
-              // statusChangeCallback
-
-
-              // Since we only want the login logic 
-              // to be initiated if the user is not logged in to Facebook we call FB.login if the
-              // response.status is unknown
+              /*
               if (response.status === "not_authorized")
               {
                 FB.login(function (secondResponse){                                              
@@ -186,8 +175,8 @@
                 FB.login(function (secondResponse){                                  
                   statusChangeCallback(secondResponse);                  
                 }, {scope:"public_profile, email"});
-              }             
-            });
+              }             */
+            //});
 
           } 
           
