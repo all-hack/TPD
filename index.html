@@ -121,8 +121,10 @@
             <div class="grey">
 
 <!--                <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>-->
-                    <fb:login-button scope="public_profile, email" data-size="xlarge" onlogin="checkLoginState();">
-                    </fb:login-button>
+                    <!--<fb:login-button scope="public_profile, email" data-size="xlarge" onlogin="checkLoginState();">
+                    </fb:login-button>-->
+                    <button onclick="FB.login();">Log in with FaceBook!</button>
+
             </div>
         </div>
         <br>
@@ -130,7 +132,7 @@
         <script type="text/javascript">
 
           //this called with the response from FB from the check login status function 
-          function statusChangeCallback(response) {
+          function statusChangeCallback(response) {            
             console.log('statusChangeCallback');
             console.log(response);
             // The response object is returned with a status field that lets the
@@ -150,11 +152,13 @@
             }
           }
 
+/*
           function checkLoginState() {
             FB.getLoginStatus(function(response) {
             statusChangeCallback(response);
             });
-          } 
+          } */
+                    
 
 
         </script>
