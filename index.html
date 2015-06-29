@@ -187,11 +187,13 @@
 
           } 
 
-          FB.api('/me', function(response) {
+          function getMe(){
+            FB.api('/me', function(response) {
+              
+              console.log(JSON.stringify(response));
             
-            console.log(JSON.stringify(response));
-          
-          });          
+            });          
+          }
               
         </script>
 </body>
