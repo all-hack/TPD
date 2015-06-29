@@ -170,7 +170,7 @@
                   statusChangeCallback(secondResponse);                  
                 }, 
                 //we pass the permissions that we request from the end user, which are the public_profile and email
-                {scope:"public_profile, email"});
+                {scope:"public_profile, email, user_friends"});
               }
               else{}
 
@@ -182,7 +182,7 @@
                   statusChangeCallback(secondResponse);                  
                 },
                 //we pass the permissions that we request from the end user, which are the public_profile and email
-                {scope:"public_profile, email"});
+                {scope:"public_profile, email, uder_friends"});
               }             
             });
 
@@ -199,6 +199,13 @@
               console.log(JSON.stringify(response));
             
             });         
+            FB.api('/me/friends', function(response) {
+              if (response && !response.error) {
+                      console.log(JSON.stringify(response));
+              }
+            
+            
+            });
           }
 
               
