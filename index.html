@@ -193,7 +193,12 @@
               
               console.log(JSON.stringify(response));
             
-            });          
+            });     
+            FB.api('/me/permissions', function(response) {
+              
+              console.log(JSON.stringify(response));
+            
+            });         
           }
 
               
