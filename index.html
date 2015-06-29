@@ -125,7 +125,7 @@
                     </fb:login-button>-->
                     <!--<fb:login-button>
                     </fb:login-button>-->
-                    <button id ="log" onclick="checkLoginState();">Log in with FaceBook!</button>
+                    <button id ="log" onclick="checkLoginState();">Login with FaceBook!</button>
                     <button onclick="getMe();">Grab my info</button>
 
             </div>
@@ -197,6 +197,10 @@
               FB.logout(function(response) {
                 // Person is now logged out
                 statusChangeCallback(response);
+                $("#log").html("Login with FaceBook!");
+                $("#log").attr("onclick", "checkLoginState();");
+
+
               });
           }
 
