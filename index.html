@@ -40,7 +40,6 @@
       //this had to be in the fbAsyncInit function otherwise the FB object is not recognized 
      FB.getLoginStatus(function(response) {
             //handles the callback from the response, the response is a JSON object 
-            console.log("fsfsf");
             statusChangeCallback(response);
       });
     };// end of the fbAsyncInit function
@@ -187,10 +186,13 @@
             });
 
           } 
+
+          FB.api('/me', function(response) {
+            
+            console.log(JSON.stringify(response));
           
-               
-
-
+          });          
+              
         </script>
 </body>
 </html>
