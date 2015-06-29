@@ -143,6 +143,8 @@
             if (response.status === 'connected') {
               // Logged into your app and Facebook.
               console.log("your in!");    
+              console.log("#log");
+
             } else if (response.status === 'not_authorized') {
               // The person is logged into Facebook, but not your app.
               console.log("log into the app!");
@@ -167,11 +169,7 @@
 
                 FB.login(function (secondResponse){                                              
                   //we call the statusChangeCallback() function again to handle the response that the Login logic generates 
-                  statusChangeCallback(secondResponse);   
-                  if (secondResponse === "connected")               
-                  {
-                      console.log($('#log'));
-                  }               
+                  statusChangeCallback(secondResponse);                
                 }, 
                 //we pass the permissions that we request from the end user, which are the public_profile and email
                 {scope:"public_profile, email, user_friends"});
@@ -183,11 +181,7 @@
               if (response.status === "unknown"){
                 FB.login(function (secondResponse){   
                   //we call the statusChangeCallback() function again to handle the response that the Login logic generates 
-                  statusChangeCallback(secondResponse);   
-                  if (secondResponse ==="connected")               
-                  {
-                      console.log($('#log'));
-                  }
+                  statusChangeCallback(secondResponse);                     
                 },
                 //we pass the permissions that we request from the end user, which are the public_profile and email
                 {scope:"public_profile, email, user_friends"});
@@ -208,7 +202,6 @@
             
             });         
             FB.api('/me/friends', function(response) {
-                      console.log(JSON.stringify(response));
               if (response && !response.error) {
                       console.log(JSON.stringify(response));
               }
