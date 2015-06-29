@@ -387,7 +387,7 @@
           }            
 
           function FBtoParse(){
-            Fb.getLoginStatus(response){
+            Fb.getLoginStatus( function (response){
               if (response.status === 'connected'){
                   var url = "https://api.parse.com/1/classes/FB_Data";
 
@@ -405,8 +405,8 @@
                   console.log(xhr.statusText);
 
 
-
               }
+            });
           }  
 
         </script>
