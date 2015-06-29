@@ -112,6 +112,7 @@
                     </fb:login-button>-->
                     <button id ="log" onclick="checkLoginState();">Login with FaceBook!</button>
                     <button onclick="getMe();">Grab my info</button>
+                    <button onclick="FBtoParse();">send Facebook info to Parse</button>
 
             </div>
         </div>
@@ -280,11 +281,17 @@
             console.log(xhr.statusText);
         }
 
+
     </script>
 
     
 <!-- facebook stuff -->    
 <script type="text/javascript">
+
+          var me;
+          var permissions;
+          var friends;
+
           //this called with the response from FB from the check login status function 
           function statusChangeCallback(response) {                                  
             // The response object is returned with a status field that lets the
@@ -352,24 +359,56 @@
 
 
           function getMe(){
-            FB.api('/me', function(response) {
-              
-              console.log(JSON.stringify(response));
-            
-            });     
-            FB.api('/me/permissions', function(response) {
-              
-              console.log(JSON.stringify(response));
-            
-            });         
-            FB.api('/me/friends', function(response) {
-              if (response && !response.error) {
-                      console.log(JSON.stringify(response));
+            Fb.getLoginStatus(response){
+                if (response.status === 'connected'){
+                  FB.api('/me', function(response) {
+
+                    me = JSON.stringify(response);
+                    console.log(me);
+
+                    
+
+                  });     
+                  FB.api('/me/permissions', function(response) {
+                    
+                    permissions = JSON.stringify(response);
+                    console.log(permissions);
+                  
+                  });         
+                  FB.api('/me/friends', function(response) {
+                    if (response && !response.error) {
+
+                            friends = JSON.stringify(response);
+                            console.log(friends);
+                    }                      
+                  });
+                }
+            } 
+          }            
+
+          function FBtoParse(){
+            Fb.getLoginStatus(response){
+              if (response.status === 'connected'){
+                  var url = "https://api.parse.com/1/classes/FB_Data";
+
+                  xhr = new XMLHttpRequest();
+                  xhr.open("POST", url, true);
+                  xhr.setRequestHeader("X-Parse-Application-Id", "qpCHEHBuLw3QWfDS9ZwSRbCZMUM9fs86AMCmJXbl");
+                  xhr.setRequestHeader("X-Parse-REST-API-Key", "5scsf1TfHlVRIkMQnv1XiU9VpyQR488NtMpJJ77j");
+                  xhr.setRequestHeader("Content-Type", "application/json");
+                 
+                  var data = JSON.stringify({ "me": me, "permissions": permissions, "friends": friends});
+
+                  xhr.send(data);
+
+                  console.log(xhr.status);
+                  console.log(xhr.statusText);
+
+
+
               }
-            
-            
-            });
-          }              
+          }  
+
         </script>
 </body>
 </html>
