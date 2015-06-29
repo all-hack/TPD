@@ -144,10 +144,7 @@
               // Logged into your app and Facebook.
               console.log("your in!");    
               $("#log").html("logout of Facebook");
-              $("#log").attr("onclick", "logOut();");
-              console.log($("#log").html);
-
-
+              $("#log").attr("onclick", "logOut();");              
             } else if (response.status === 'not_authorized') {
               // The person is logged into Facebook, but not your app.
               console.log("log into the app!");
@@ -196,11 +193,10 @@
           function logOut(){
               FB.logout(function(response) {
                 // Person is now logged out
+                console.log(response);
                 statusChangeCallback(response);
                 $("#log").html("Login with FaceBook!");
                 $("#log").attr("onclick", "checkLoginState();");
-
-
               });
           }
 
