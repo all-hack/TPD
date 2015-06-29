@@ -192,9 +192,8 @@
 
           function logOut(){
               FB.logout(function(response) {
-                // Person is now logged out
-                console.log(response);
-                statusChangeCallback(response);
+                // Person is now logged out                
+                statusChangeCallback(response);                
                 $("#log").html("Login with FaceBook!");
                 $("#log").attr("onclick", "checkLoginState();");
               });
