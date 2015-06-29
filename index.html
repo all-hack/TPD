@@ -359,7 +359,7 @@
 
 
           function getMe(){
-            Fb.getLoginStatus(response){
+            Fb.getLoginStatus(function response){
                 if (response.status === 'connected'){
                   FB.api('/me', function(response) {
 
