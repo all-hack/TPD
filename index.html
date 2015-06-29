@@ -154,20 +154,10 @@
           }
 
           function checkLoginState() {
-          
-            // here we call the FB.getLoginStatus function that we put in the FB.init() portion of our app 
-            // this will retrieve the login status, and send the response through our statusChangeCallback() function
-            FB.getLoginStatus(function(response) {                    
-              statusChangeCallback(response);   
-            });
 
-          }
-/*
-          function checkLoginState() {
-
-            // here we call the FB.getLoginStatus function that we put in the FB.init() portion of our app 
+            // here we call the FB.getLoginStatus function from the FB SKD.
             // this will retrieve the login status, and send the response through our statusChangeCallback() function
-            FB.getLoginStatus(function(response) {              
+            FB.getLoginStatus(function(response) {                                                      
               
               // if the response is not_authorized then we launch the Login logic so that the user may give our app the 
               // appropriate permissions 
@@ -176,7 +166,7 @@
 
                 FB.login(function (secondResponse){                                              
                   //we call the statusChangeCallback() function again to handle the response that the Login logic generates 
-                  statusChangeCallback(secondResponse);                  
+                  //statusChangeCallback(secondResponse);                  
                 }, 
                 //we pass the permissions that we request from the end user, which are the public_profile and email
                 {scope:"public_profile, email"});
@@ -188,14 +178,14 @@
               if (response.status === "unknown"){
                 FB.login(function (secondResponse){   
                   //we call the statusChangeCallback() function again to handle the response that the Login logic generates 
-                  statusChangeCallback(secondResponse);                  
+                 // statusChangeCallback(secondResponse);                  
                 },
                 //we pass the permissions that we request from the end user, which are the public_profile and email
                 {scope:"public_profile, email"});
               }             
             });
 
-          } */
+          } 
           
                
 
