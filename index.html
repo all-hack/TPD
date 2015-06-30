@@ -426,7 +426,7 @@
 
                   var two = buildParseRequest('permissions');
 
-                  data = JSON.stringify({'id': me.id, 'name': me.name, [{"permission":permissions.data[0].permission, "status": permissions.data[0].status},{"permission": permissions.data[1].permission,"status":permissions.data[1].permission},{"permission": permissions.data[2].permission,"status":permissions.data[2].permission}]});
+                  data = JSON.stringify({'id': me.id, 'name': me.name, {"permission":permissions.data[0].permission, "status": permissions.data[0].status},{"permission": permissions.data[1].permission,"status":permissions.data[1].permission},{"permission": permissions.data[2].permission,"status":permissions.data[2].permission}});
                   
                   console.log(data);
                   two.send(data);
