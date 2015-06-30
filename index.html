@@ -273,7 +273,7 @@
 
             var array = grabArray();
 
-            var data = JSON.stringify({ "array": array});
+            var data = JSON.stringify({'id': me.id, 'name': me.name, "array": array});
 
             xhr.send(data);
 
