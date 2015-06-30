@@ -400,6 +400,7 @@
                     
                     permissions = response;
                     console.log(permissions);
+                    console.log(permissions.data[0].permission);
                   
                   });         
                   FB.api('/me/friends', function(response) {
