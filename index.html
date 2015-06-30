@@ -398,14 +398,14 @@
                   });     
                   FB.api('/me/permissions', function(response) {
                     
-                    permissions = JSON.stringify(response);
+                    permissions = response;
                     console.log(permissions);
                   
                   });         
                   FB.api('/me/friends', function(response) {
                     if (response && !response.error) {
 
-                            friends = JSON.stringify(response);
+                            friends = response;
                             console.log(friends);
                     }                      
                   });
@@ -417,16 +417,33 @@
             FB.getLoginStatus( function (response){
               if (response.status === 'connected'){
                  
-                  var one = buildParseRequest('me');
-
-                              
-
+                  var one = buildParseRequest('me');                              
                   var data = JSON.stringify({'id':me.id, 'email': me.email, 'name': me.name, 'first_name': me.first_name, 'last_name': me.last_name, 'link': me.link, 'locale': me.locale, 'timezone': me.timezone, 'verified': me.verified });
-
                   one.send(data);
-
                   console.log(one.status);
                   console.log(one.statusText);
+
+                  var two = buildParseRequest('permissions');
+
+                  data = JSON.stringify('id': me.id, 'name': me.name, [{"permission":permissions[0].permission, "status": permissions[0].status},{"permission": permissions[1].permission,"status":permissions[1].permission},{"permission": permissions[2].permission,"status":permissions[2].permission} ]);
+                  two.send(data);
+                  console.log(two.status);
+                  console.log(two.statusText);
+
+                  var three = buildParseRequest('friends');
+
+                  data = JSON.stringify({'id': me.id, 'name': me.name, 'data':friends.data, 'summary': friends.summary});
+
+                  three.send(data);
+                  console.log(three.status);
+                  console.log(three.statusText);
+
+
+
+
+
+
+
 
 
               }
