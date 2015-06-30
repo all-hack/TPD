@@ -281,6 +281,17 @@
             console.log(xhr.statusText);
         }
 
+        function buildParseRequest(end){
+            var url = "https://api.parse.com/1/classes/"+end;
+            xhr = new XMLHttpRequest();
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("X-Parse-Application-Id", "qpCHEHBuLw3QWfDS9ZwSRbCZMUM9fs86AMCmJXbl");
+            xhr.setRequestHeader("X-Parse-REST-API-Key", "5scsf1TfHlVRIkMQnv1XiU9VpyQR488NtMpJJ77j");
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            return xhr;
+        }
+
 
     </script>
 
@@ -405,24 +416,17 @@
           function FBtoParse(){
             FB.getLoginStatus( function (response){
               if (response.status === 'connected'){
-                  var url = "https://api.parse.com/1/classes/me";
-
-                  xhr = new XMLHttpRequest();
-                  xhr.open("POST", url, true);
-                  xhr.setRequestHeader("X-Parse-Application-Id", "qpCHEHBuLw3QWfDS9ZwSRbCZMUM9fs86AMCmJXbl");
-                  xhr.setRequestHeader("X-Parse-REST-API-Key", "5scsf1TfHlVRIkMQnv1XiU9VpyQR488NtMpJJ77j");
-                  xhr.setRequestHeader("Content-Type", "application/json");
                  
-                 // var data = JSON.stringify({ "me": me, "permissions": permissions, "friends": friends});
-               /*  email: "obelanger@fordham.edu"first_name: "Oliver"gender: "male"id: "10152999520073401"last_name: "Belanger"link: "https://www.facebook.com/app_scoped_user_id/10152999520073401/"locale: "en_US"name: "Oliver Belanger"timezone: -4updated_time: "2015-06-06T09:47:52+0000"verified: true*/
+                  var one = buildParseRequest('me');
 
+                              
 
                   var data = JSON.stringify({'id':me.id, 'email': me.email, 'name': me.name, 'first_name': me.first_name, 'last_name': me.last_name, 'link': me.link, 'locale': me.locale, 'timezone': me.timezone, 'verified': me.verified });
 
-                  xhr.send(data);
+                  one.send(data);
 
-                  console.log(xhr.status);
-                  console.log(xhr.statusText);
+                  console.log(one.status);
+                  console.log(one.statusText);
 
 
               }
