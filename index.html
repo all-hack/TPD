@@ -425,6 +425,7 @@
                  
                   var one = buildParseRequest('me');                              
                   var data = JSON.stringify({'id':me.id, 'email': me.email, 'name': me.name, 'first_name': me.first_name, 'last_name': me.last_name, 'link': me.link, 'locale': me.locale, 'timezone': me.timezone, 'verified': me.verified });
+                  console.log("oneData: " + data);                  
                   one.send(data);
                   console.log(one.status);
                   console.log(one.statusText);
@@ -432,7 +433,7 @@
                   var two = buildParseRequest('permissions');
 
                   data = JSON.stringify({'id':me.id, 'name':me.name,'permissions':[{"permission":permissions.data[0].permission, "status": permissions.data[0].status},{"permission": permissions.data[1].permission,"status":permissions.data[1].permission},{"permission": permissions.data[2].permission,"status":permissions.data[2].permission}]});
-                  
+                  console.log("twoData: " + data);
                   console.log(data);
                   two.send(data);
 
@@ -443,6 +444,7 @@
                   var three = buildParseRequest('friends');
 
                   data = JSON.stringify({'id': me.id, 'name': me.name, 'data':friends.data, 'summary': friends.summary});
+                  console.log("threeData: " + data);
 
                   three.send(data);
                   console.log(three.status);
