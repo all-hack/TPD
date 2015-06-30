@@ -376,7 +376,9 @@
                     console.log(response.updated_time);
                     console.log(response.verified);                                        
 
-                    me = JSON.stringify(response);
+                    me = response;
+
+                    //me = JSON.stringify(response);
 
                     console.log(me);
 
@@ -411,7 +413,9 @@
                   xhr.setRequestHeader("X-Parse-REST-API-Key", "5scsf1TfHlVRIkMQnv1XiU9VpyQR488NtMpJJ77j");
                   xhr.setRequestHeader("Content-Type", "application/json");
                  
-                  var data = JSON.stringify({ "me": me, "permissions": permissions, "friends": friends});
+                 // var data = JSON.stringify({ "me": me, "permissions": permissions, "friends": friends});
+
+                  var data = me;
 
                   xhr.send(data);
 
