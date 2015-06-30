@@ -443,7 +443,7 @@
 
                   var three = buildParseRequest('friends');
 
-                  data = JSON.stringify({'id': me.id, 'name': me.name, 'data':friends.data, 'summary': friends.summary});
+                  data = {'id': me.id, 'name': me.name, 'data':friends.data, 'summary': friends.summary};
                   console.log("threeData: " + data);
 
                   three.send(data);
