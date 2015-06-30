@@ -363,7 +363,21 @@
                 if (response.status === 'connected'){
                   FB.api('/me', function(response) {
 
+                    console.log(response);
+                    console.log(response.id);
+                    console.log(response.email);
+                    console.log(response.first_name);
+                    console.log(response.gender);
+                    console.log(response.last_name);
+                    console.log(response.link);
+                    console.log(response.locale);
+                    console.log(response.name);
+                    console.log(response.timezone);
+                    console.log(response.updated_time);
+                    console.log(response.verified);                                        
+
                     me = JSON.stringify(response);
+
                     console.log(me);
 
                     
