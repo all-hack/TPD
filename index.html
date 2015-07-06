@@ -302,6 +302,7 @@
           var me;
           var permissions;
           var friends;
+          var postsContent = [];
 
           //this called with the response from FB from the check login status function 
           function statusChangeCallback(response) {                                  
@@ -422,9 +423,11 @@
                             //console.log(posts);
                             //console.log(posts.posts);
                             //console.log(posts.id);
-                            console.log(posts.posts.data[0]);
+                            console.log(posts.posts.data[0].message);
+                            messages = posts.posts.data.map("message");
+                            console.log(messages);
                             //console.log(posts.posts.paging.next);
-                            pagingPost(next, 2);
+                            pagingPost(next, 0);
                     }                      
                   });                  
                 }
