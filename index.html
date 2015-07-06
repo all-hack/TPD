@@ -425,8 +425,8 @@
                             //console.log(posts.id);
                             //console.log(posts.posts.data[0].message);
                             var messages = posts.posts.data.map(function (item, index){
-                                    var retain = {};
-                                    retain[item["message"]] = index;
+                                    var retain;
+                                    retain = item["message"];
                                     return retain;
                                 });
                             console.log(messages);
