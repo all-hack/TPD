@@ -438,7 +438,7 @@
                     $.ajax({
                             url: nextPage, //the url we are going to 
                             type: "GET", // the request method
-                            success: function(){ 
+                            success: function(data){ 
                                 console.log(data);
                                 console.log(pages);
                                 pagingPost(0,pages-1);
