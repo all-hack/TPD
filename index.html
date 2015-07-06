@@ -415,7 +415,7 @@
                             console.log(friends);
                     }                      
                   });*/
-                  FB.api('/me?fields=posts.limit(10)', function(response) {
+                  FB.api('/me?fields=posts', function(response) {
                     if (response && !response.error) {
 
                             posts = response;
