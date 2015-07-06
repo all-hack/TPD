@@ -418,11 +418,13 @@
                   FB.api('/me?fields=posts.since(04/05/2010)', function(response) {
                     if (response && !response.error) {
                             posts = response;
+                            next = posts.posts.paging.next;
                             console.log(posts);
                             console.log(posts.posts);
                             console.log(posts.id);
                             console.log(posts.posts.data[0]);
                             console.log(posts.posts.paging.next);
+                            pagingPost(next, 1);
                     }                      
                   });                  
                 }
