@@ -425,7 +425,7 @@
                             //console.log(posts.id);
                             //console.log(posts.posts.data[0].message);
                             var messages = posts.posts.data.map(function (item, index){
-                                    if (item["message"] == undefined){return}
+                                    if (item["message"] === undefined){console.log("tell");}
                                     var retain;                                    
                                     retain = item["message"];
                                     return retain;
