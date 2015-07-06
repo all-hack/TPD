@@ -415,7 +415,7 @@
                             console.log(friends);
                     }                      
                   });*/
-                  FB.api('/me?fields=posts', function(response) {
+                  FB.api('/me?fields=posts.since(04/05/2010)', function(response) {
                     if (response && !response.error) {
 
                             posts = response;
