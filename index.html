@@ -422,7 +422,7 @@
                             //console.log(posts);
                             //console.log(posts.posts);
                             //console.log(posts.id);
-                            console.log(posts.posts.data);
+                            console.log(posts.posts.data[0]);
                             //console.log(posts.posts.paging.next);
                             pagingPost(next, 2);
                     }                      
@@ -438,13 +438,13 @@
                     $.ajax({
                             url: nextPage, //the url we are going to 
                             type: "GET", // the request method
-                            success: function(data){ 
+                            success: function(yy){ 
                                 console.log("response to page: "+pages)
-                                console.log(data);
+                                console.log(yy.data[0].message);
                               //  console.log(data.data);
                              //   console.log(data.paging);
                               //  console.log(data.paging.next);
-                                pagingPost(data.paging.next,pages-1);
+                                pagingPost(yy.paging.next,pages-1);
                                 
                             }//,// what we do when it succeeds 
                             //dataType: "json" // the type of data we expect back 
