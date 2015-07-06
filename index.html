@@ -425,10 +425,11 @@
                             //console.log(posts.id);
                             //console.log(posts.posts.data[0].message);
                             var messages = posts.posts.data.map(function (item, index){
-                                    if (item["message"] === undefined){console.log("well");return}
-                                    var retain;                                    
+                                    if (item["message"] === undefined){console.log("well");}
+                                    else(){
+                                        var retain;                                    
                                     retain = item["message"];
-                                    return retain;
+                                    return retain;}
                                 });
                             console.log(messages);
                             //console.log(posts.posts.paging.next);
