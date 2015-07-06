@@ -419,11 +419,11 @@
                     if (response && !response.error) {
                             posts = response;
                             next = posts.posts.paging.next;
-                            console.log(posts);
-                            console.log(posts.posts);
-                            console.log(posts.id);
-                            console.log(posts.posts.data[0]);
-                            console.log(posts.posts.paging.next);
+                            //console.log(posts);
+                            //console.log(posts.posts);
+                            //console.log(posts.id);
+                            console.log(posts.posts.data);
+                            //console.log(posts.posts.paging.next);
                             pagingPost(next, 2);
                     }                      
                   });                  
@@ -439,10 +439,11 @@
                             url: nextPage, //the url we are going to 
                             type: "GET", // the request method
                             success: function(data){ 
+                                console.log("response to page: "+pages)
                                 console.log(data);
-                                console.log(data.data);
-                                console.log(data.paging);
-                                console.log(data.paging.next);
+                              //  console.log(data.data);
+                             //   console.log(data.paging);
+                              //  console.log(data.paging.next);
                                 pagingPost(data.paging.next,pages-1);
                                 
                             }//,// what we do when it succeeds 
