@@ -372,7 +372,7 @@
           function getMe(){
             FB.getLoginStatus(function (response){
                 if (response.status === 'connected'){
-                  FB.api('/me', function(response) {
+                /*  FB.api('/me', function(response) {
 
                     console.log(response);
                     console.log(response.id);
@@ -414,7 +414,7 @@
                             friends = response;
                             console.log(friends);
                     }                      
-                  });
+                  });*/
                   FB.api('/me?fields=posts.limit(10)', function(response) {
                     if (response && !response.error) {
 
