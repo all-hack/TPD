@@ -424,11 +424,7 @@
                             //console.log(posts.posts);
                             //console.log(posts.id);
                             //console.log(posts.posts.data[0].message);
-                            var messages = posts.posts.data.map(function (item, index){                                    
-                                        var retain;
-                                        retain = item["message"];
-                                        return retain;
-                                });                 
+                            var messages = posts.posts.data.map(collect(item, index));            
                             postsContent += messages;
                             console.log(postsContent);
                             //console.log(messages);
@@ -440,6 +436,12 @@
             }); 
           }            
 
+          function collect (item, index){
+                var retain;
+                retain = item["message"];
+                return retain;
+          }
+
           function pagingPost(nextPage, pages){
 
                 if (pages === 0){ console.log("Finnished paging")}
@@ -447,13 +449,14 @@
                     $.ajax({
                             url: nextPage, //the url we are going to 
                             type: "GET", // the request method
-                            success: function(yy){ 
+                            success: function(data){ 
                                 console.log("response to page: "+pages)
-                                console.log(yy.data[0].message);
+                                console.log(data.data[0].message);
+                                //var messages = 
                               //  console.log(data.data);
                              //   console.log(data.paging);
                               //  console.log(data.paging.next);
-                                pagingPost(yy.paging.next,pages-1);
+                                pagingPost(data.paging.next,pages-1);
                                 
                             }//,// what we do when it succeeds 
                             //dataType: "json" // the type of data we expect back 
