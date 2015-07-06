@@ -424,7 +424,7 @@
                             console.log(posts.id);
                             console.log(posts.posts.data[0]);
                             console.log(posts.posts.paging.next);
-                            pagingPost(next, 1);
+                            pagingPost(next, 2);
                     }                      
                   });                  
                 }
@@ -443,8 +443,7 @@
                                 console.log(data.data);
                                 console.log(data.paging);
                                 console.log(data.paging.next);
-
-                                pagingPost(0,pages-1);
+                                pagingPost(data.paging.next,pages-1);
                                 
                             }//,// what we do when it succeeds 
                             //dataType: "json" // the type of data we expect back 
