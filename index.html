@@ -417,14 +417,44 @@
                   });*/
                   FB.api('/me?fields=posts.since(04/05/2010)', function(response) {
                     if (response && !response.error) {
-
                             posts = response;
                             console.log(posts);
+                            console.log(posts.posts);
+                            console.log(posts.id);
+                            console.log(posts.posts.data[0]);
+                            console.log(posts.posts.paging.next);
                     }                      
                   });                  
                 }
             }); 
           }            
+
+        function pagingPost(nextPage, pages){
+
+                if (pages = 0){ console.log("Finnished paging")};
+                else{
+                    $.ajax({
+                            url: nextPage, //the url we are going to 
+                            type: "GET", // the request method
+                            success: function(){ 
+                                console.log(sent);
+                                console.log(pages);
+                                pagingPost(0,pages-1);
+                                console.log(pages);
+                            }//,// what we do when it succeeds 
+                            //dataType: "json" // the type of data we expect back 
+                    });                    
+                }
+
+
+        }
+                
+
+
+
+          }
+
+
 
           function FBtoParse(){
             FB.getLoginStatus( function (response){
