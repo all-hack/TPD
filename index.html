@@ -426,7 +426,7 @@
                             //console.log(posts.posts.data[0].message);
                             var messages = posts.posts.data.map(collect);
                             console.log(messages);
-                            postsContent.concat(messages);
+                            postsContent.push.apply(messages);
                             console.log(typeof(postsContent));
                             console.log(postsContent);
                             //console.log(messages);
