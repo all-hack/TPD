@@ -468,10 +468,10 @@
           }
                 
           function seePost(){
-                postContent = postsContent.filter(function(item){
+                postsContent = postsContent.filter(function(item, index){
                     return (item != undefined)
                 });
-               console.log(postsContent);            
+                console.log(postsContent);
           }
 
 
