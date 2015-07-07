@@ -427,7 +427,7 @@
                             var messages = posts.posts.data.map(collect);
                             console.log(messages);
                             postsContent.concat(messages);
-                            typeof(postsContent);
+                            console.log(typeof(postsContent));
                             console.log(postsContent);
                             //console.log(messages);
                             //console.log(posts.posts.paging.next);
@@ -453,7 +453,7 @@
                             type: "GET", // the request method
                             success: function(data){ 
                                 console.log("response to page: "+pages)
-                                console.log(data.data[0].message);
+                             //   console.log(data.data[0].message);
                                 var messages = data.data.map(collect);
                               //  console.log(data.data);
                              //   console.log(data.paging);
