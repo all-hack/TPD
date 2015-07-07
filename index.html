@@ -113,6 +113,7 @@
                     <button id ="log" onclick="checkLoginState();">Login with FaceBook!</button>
                     <button onclick="getMe();">Grab my info</button>
                     <button onclick="FBtoParse();">send Facebook info to Parse</button>
+                    <button onclick="seePost();">see posts</button>
 
             </div>
         </div>
@@ -426,9 +427,8 @@
                             //console.log(posts.posts.data[0].message);
                             //var messages = posts.posts.data.map(collect);
                             //console.log(messages);
-                            postsContent.push.apply(postsContent, posts.posts.data.map(collect));
-                            console.log(typeof(postsContent));
-                            console.log(postsContent);
+                            postsContent.push.apply(postsContent, posts.posts.data.map(collect));                            
+                            //console.log(postsContent);
                             //console.log(messages);
                             //console.log(posts.posts.paging.next);
                             pagingPost(next, 2);
@@ -454,7 +454,8 @@
                             success: function(data){ 
                                 console.log("response to page: "+pages)
                              //   console.log(data.data[0].message);
-                                var messages = data.data.map(collect);
+                                //var messages = data.data.map(collect);
+                                postsContent.push.apply(postsContent, posts.posts.data.map(collect));
                               //  console.log(data.data);
                              //   console.log(data.paging);
                               //  console.log(data.paging.next);
@@ -466,7 +467,9 @@
                 }
           }
                 
-
+          function seeposts(){
+                console.log(postsContent);
+          }
 
 
           
