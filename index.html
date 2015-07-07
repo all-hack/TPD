@@ -424,11 +424,8 @@
                             //console.log(posts.posts);
                             //console.log(posts.id);
                             //console.log(posts.posts.data[0].message);
-                            var messages = posts.posts.data.map(collect);        
-                            console.log(typeof(messages));
-                            console.log(typeof(postsContent));
-                            postsContent += messages;
-                            console.log(typeof(postsContent));
+                            var messages = posts.posts.data.map(collect);                            
+                            postsContent.concat(messages);
                             console.log(postsContent);
                             //console.log(messages);
                             //console.log(posts.posts.paging.next);
