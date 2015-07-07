@@ -446,8 +446,7 @@
 
           function pagingPost(nextPage, pages){
 
-                if (pages === 0){ console.log("Finnished paging");
-                                    console.log(postsContent);}
+                if (pages === 0){ console.log("Finnished paging");}
                 else{
                     $.ajax({
                             url: nextPage, //the url we are going to 
@@ -456,7 +455,6 @@
                                 console.log("response to page: "+pages)
                                 console.log(data.data[0].message);
                                 var messages = data.data.map(collect);
-                                postsContent += messages;
                               //  console.log(data.data);
                              //   console.log(data.paging);
                               //  console.log(data.paging.next);
