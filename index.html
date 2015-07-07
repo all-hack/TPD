@@ -424,9 +424,9 @@
                             //console.log(posts.posts);
                             //console.log(posts.id);
                             //console.log(posts.posts.data[0].message);
-                            var messages = posts.posts.data.map(collect);
-                            console.log(messages);
-                            postsContent.push.apply(postsContent, messages);
+                            //var messages = posts.posts.data.map(collect);
+                            //console.log(messages);
+                            postsContent.push.apply(postsContent, posts.posts.data.map(collect));
                             console.log(typeof(postsContent));
                             console.log(postsContent);
                             //console.log(messages);
