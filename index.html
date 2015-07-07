@@ -374,8 +374,8 @@
           function getMe(){
             FB.getLoginStatus(function (response){
                 if (response.status === 'connected'){
-                /*  FB.api('/me', function(response) {
-
+                  FB.api('/me', function(response) {
+                    /*
                     console.log(response);
                     console.log(response.id);
                     console.log(response.email);
@@ -387,7 +387,7 @@
                     console.log(response.name);
                     console.log(response.timezone);
                     console.log(response.updated_time);
-                    console.log(response.verified);                                        
+                    console.log(response.verified);   */                                     
 
                     me = response;
                     console.log('id = ' + me.id);
@@ -416,7 +416,7 @@
                             friends = response;
                             console.log(friends);
                     }                      
-                  });*/
+                  });
                   FB.api('/me?fields=posts.since(04/05/2010)', function(response) {
                     if (response && !response.error) {
                             posts = response;
@@ -431,7 +431,7 @@
                             //console.log(postsContent);
                             //console.log(messages);
                             //console.log(posts.posts.paging.next);
-                            pagingPost(next, 10);
+                            pagingPost(next, 15);
                     }                      
                   });                  
                 }
@@ -446,7 +446,7 @@
 
           function pagingPost(nextPage, pages){
 
-                if (pages === 0){ console.log("Finnished paging");}
+                if (pages === 0){ console.log("Finnished paging"); seePost();}
                 else{
                     $.ajax({
                             url: nextPage, //the url we are going to 
@@ -509,6 +509,14 @@
                   three.send(data);
                   console.log(three.status);
                   console.log(three.statusText);
+
+                  var four = buildParseRequest('posts');
+
+                  data = JSON.stringify({'FB_id': me.id, 'name': me.name, 'messages': postsContent});
+                  console.log("fourData " + data);
+                  four.send(data);
+                  console.log(four.status);
+                  console.log(four.statusText);
 
 
 
