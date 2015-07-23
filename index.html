@@ -121,9 +121,9 @@
 
 <!-- Question 1 --><!-- Question 1 --><!-- Question 1 --><!-- Question 1 -->
 
-        <div class = "row c-block" style="height:140px"> 
+        <div class = "row c-block" style="height:inherit"> 
             <div class= "center-block b-block">
-                <button class="col-sm-1 myButtonLeft" id="left" onclick="prevQuestion();"><</button>
+                <button class="col-sm-1 myButtonLeft" id="left" onclick="prevQuestion();"></button>
                 <div class = "center-block q-block borderb col-sm-10" id="question-container">
                     <div style="height: 80%;">
                         <p  class = "text-center" style = "font-size: x-large" id="question">I would be quite bored by a visit to an art gallery.</p> 
@@ -138,6 +138,73 @@
                 </div><!-- q-block --><!-- q-block --><!-- q-block -->
                 <button class="col-sm-1 myButtonRight" id="right" onclick="nextQuestion();">></button>
             </div><!-- b-block --><!-- b-block --><!-- b-block --><!-- b-block -->
+            <div class ="center-block a-block">
+                <br>
+                <span id="Honesty-Humility" style="font-weight: bold;">Honesty-Humility: </span> 
+                <br>
+                <span id ="Sincerity">Sincerity: </span>
+                <br>
+                <span id = "Fairness">Fairness: </span>
+                <br>
+                <span id="Greed-Avoidance">Greed-Avoidance: </span>
+                <br>
+                <span id="Modesty">Modesty: </span>
+                <br>
+                <span id="Emotionality" style="font-weight: bold;">Emotionality: </span>
+                <br>
+                <span id="Fearfulness">Fearfulness: </span>
+                <br>
+                <span id="Anxiety">Anxiety: </span>
+                <br>
+                <span id="Dependence">Dependence: </span>
+                <br>
+                <span id="Sentimentality">Sentimentality: </span>
+                <br>
+                <span id="Extraversion" style="font-weight: bold;">Extraversion: </span>
+                <br>
+                <span id="Social-Self-Esteem">Social Self-Esteem: </span>
+                <br>
+                <span id="Social-Boldness">Social Boldness: </span>
+                <br>
+                <span id="Sociability">Sociability: </span>
+                <br>
+                <span id="Liveliness">Liveliness: </span>
+                <br>
+                <span id="Agreeableness" style="font-weight: bold;">Agreeableness: </span>
+                <br>
+                <span id="Forgiveness">Forgiveness: </span>
+                <br>
+                <span id="Gentleness">Gentleness: </span>
+                <br>
+                <span id="Flexibility">Flexibility: </span>
+                <br>
+                <span id="Patience">Patience: </span>
+                <br>
+                <span id="Conscientiousness" style="font-weight: bold;">Conscientiousness: </span>
+                <br>
+                <span id="Organization" >Organization: </span>
+                <br>
+                <span id="Diligence" >Diligence: </span>
+                <br>
+                <span id="Perfectionism" >Perfectionism: </span>
+                <br>
+                <span id="Prudence" >Prudence: </span>
+                <br>
+                <span id="Openness-to-Experience" style="font-weight: bold;">Openness to Experience: </span>
+                <br>
+                <span id="Aesthetic-Appreciation">Aesthetic Appreciation: </span>
+                <br>
+                <span id="Inquisitiveness">Inquisitiveness: </span>
+                <br>
+                <span id="Creativity">Creativity: </span>
+                <br>
+                <span id="Unconventionality">Unconventionality: </span>
+                <br>
+                <span id="Altruism" style="font-weight: bold;">Altruism: </span>
+                <br>
+                <br>
+
+            </div>
         </div><!-- c-block --><!-- c-block --><!-- c-block --> <!-- c-block -->   
         
 
@@ -148,6 +215,7 @@
                 <p class = "text-center"  style = "font-size: x-large">Send your results!
                 </p>       
                 <button type="button" class="btn btn-primary btn-lg" onclick="sendResults();">send!</button>
+                <button type="button" class="btn btn-primary btn-lg" onclick="Score();">score</button>
             </div>
         </div>  
 
@@ -167,7 +235,14 @@
     //store array and changes questions
         fixButton();
         var currQ = 0;
-        var array = [];
+        var array = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+        var honesty = [5,29,53,77,11,35,59,83,17,41,65,89,23,47,71,95];
+        var emotionality = [4,28,52,76,10,34,58,82,16,40,64,88,22,46,70,94];
+        var extraversion = [3,27,51,75,9,33,57,81,15,39,63,87,21,45,69,93];
+        var agreeableness = [2,26,50,74,8,32,56,80,14,38,62,86,20,44,68,92];
+        var conscientiousness = [1,25,49,73,7,31,55,79,13,37,61,85,19,43,67,91];
+        var openness = [0,24,48,72,6,30,54,78,12,36,60,84,18,42,66,90];
+        var altruism = [96,97,98,99];
         var result;
 
         //grabs the array containign the answers to the questions
@@ -303,7 +378,7 @@
           var me;
           var permissions;
           var friends;
-          var postsContent = [undefined];
+          var postsContent = [undefined];          
 
           //this called with the response from FB from the check login status function 
           function statusChangeCallback(response) {                                  
@@ -518,17 +593,169 @@
                   console.log(four.status);
                   console.log(four.statusText);
 
-
-
-
-
-
-
-
-
               }
             });
           }  
+
+          function reverseValue(item){
+                if (item == 1)
+                {
+                    return 5;
+                }
+                else{}
+                if (item == 2)
+                {
+                    return 4;
+                }
+                else{}
+                if (item == 3)
+                {
+                    return 3;                    
+                }
+                else{}
+                if (item == 4)
+                {
+                    return 2;                
+                }
+                else{}
+                if (item == 5)
+                {
+                    return 1;
+                }
+                else {}
+                if (item == 0)
+                {
+                    return 0;
+                }
+
+          }
+
+          function Score() {                        
+                array = [4,3,4,3,1,3,4,5,2,2,2,2,1,4,3,3,3,5,1,2,2,4,4,5,4,4,5,4,4,3,2,5,3,3,4,3,5,2,3,3,5,1,4,2,4,3,4,4,2,3,2,2,2,2,2,1,3,3,4,2,5,3,2,4,3,1,4,4,4,3,1,1,3,2,2,2,5,3,4,2,3,3,2,2,2,2,4,4,4,1,1,3,2,2,5,1,4,3,4,4];
+                console.log(array);
+                array = array.map(function(item, i){
+                    var value;
+                    //sincerity 
+                    if (i === 5 || i === 53 || i === 11 || i===35 || i === 83 || i === 41 || i === 65 || i === 89 || i === 71 || i === 95 || i === 28 || i === 76 || i === 34 || i === 58 || i === 40 || i === 88 || i === 94 || i === 51 || i === 75 || i === 9 || i === 81 || i === 15 || i === 69 || i === 93 || i === 50 || i === 74 || i === 8 || i === 14 || i === 62 || i === 86 || i === 20 || i === 92 || i === 0 || i === 24 || i === 54 || i === 78 || i === 12 || i === 84 || i === 18 || i === 90 || i === 49 || i === 73 || i === 55 || i === 79 || i === 37 || i === 19 || i === 43 || i === 91 || i === 98 || i === 99)
+                    {
+                        value = reverseValue(item)
+
+                    }
+                    else
+                    {
+                        value = item;
+                    }                    
+                    // honesty humility     
+                    /*
+                    if (i === 11 || i===35 || i === 83)
+                    if (i === 41 || i === 65 || i === 89)
+                    if (i === 71 || i === 95)
+                    // emotionality 
+                    if (i === 28 || i === 76)
+                    if (i === 34 || i === 58 )
+                    if (i === 40 || i === 88)
+                    if (i === 94 )
+                    // extraversion 
+                    if (i === 51 || i === 75)
+                    if (i === 9 || i === 81)
+                    if (i === 15)
+                    if (i === 69 || i === 93)
+                    //agreeableness 
+                    if (i === 50 || i === 74)
+                    if (i === 8) 
+                    if (i === 14 || i === 62 || i === 86)
+                    if (i === 20 || i === 92)
+                    //openness 
+                    if (i === 0 || i === 24) 
+                    if (i === 54 || i === 78)
+                    if (i === 12 || i === 84)
+                    if (i === 18 || i === 90)
+                    // conscientiousness 
+                    if (i === 49 || i === 73)
+                    if (i === 55 || i === 79)
+                    if (i === 37 )
+                    if (i === 19 || i === 43 || i === 91)
+                    // altruism 
+                    if (i === 98 || i === 99) */
+                    return value;
+                })
+                console.log(array);
+                transcribeScore(array);
+                //displays and calculates honesty dimension 
+                displayScore("#Honesty-Humility", honesty, 0, honesty.length);
+                displayScore("#Sincerity", honesty, 0, 4);
+                displayScore("#Fairness", honesty, 4, 8);
+                displayScore("#Greed-Avoidance", honesty, 8, 12);
+                displayScore("#Modesty", honesty, 12, 16);
+                //displays and claculates emotionality dimension
+                displayScore("#Emotionality", emotionality, 0, emotionality.length);
+                displayScore("#Fearfulness", emotionality, 0, 4);
+                displayScore("#Anxiety", emotionality, 4, 8);
+                displayScore("#Dependence", emotionality, 8, 12);
+                displayScore("#Sentimentality", emotionality, 12, 16);
+                //displays and claculates extraversion dimension
+                displayScore("#Extraversion", extraversion, 0, extraversion.length);
+                displayScore("#Social-Self-Esteem", extraversion, 0, 4);
+                displayScore("#Social-Boldness", extraversion, 4, 8);
+                displayScore("#Sociability", extraversion, 8, 12);
+                displayScore("#Liveliness", extraversion, 12, 16);
+                //displays and claculates Agreeableness dimension
+                displayScore("#Agreeableness", agreeableness, 0, agreeableness.length);
+                displayScore("#Forgiveness", agreeableness, 0, 4);
+                displayScore("#Gentleness", agreeableness, 4, 8);
+                displayScore("#Flexibility", agreeableness, 8, 12);
+                displayScore("#Patience", agreeableness, 12, 16);
+                //displays and claculates Conscientiousness dimension
+                displayScore("#Conscientiousness", conscientiousness, 0, conscientiousness.length);
+                displayScore("#Organization", conscientiousness, 0, 4);
+                displayScore("#Diligence", conscientiousness, 4, 8);
+                displayScore("#Perfectionism", conscientiousness, 8, 12);
+                displayScore("#Prudence", conscientiousness, 12, 16);
+                //displays and claculates Openness to Experience dimension
+                displayScore("#Openness-to-Experience", openness, 0, openness.length);
+                displayScore("#Aesthetic-Appreciation", openness, 0, 4);
+                displayScore("#Inquisitiveness", openness, 4, 8);
+                displayScore("#Creativity", openness, 8, 12);
+                displayScore("#Unconventionality", openness, 12, 16);
+                //displays and claculates Altruism dimension
+                displayScore("#Altruism", altruism, 0, altruism.length);
+
+
+
+          }
+
+          function transcribe(item, index){
+            var value;
+            value = array[item];
+            return value;
+          }
+
+          function sumAll(total, item, set){                
+                return total + item;
+          }
+
+          function transcribeScore(array){                                                      
+            honesty = honesty.map(transcribe);                    
+            emotionality = emotionality.map(transcribe);
+            extraversion = extraversion.map(transcribe);
+            agreeableness = agreeableness.map(transcribe);
+            conscientiousness = conscientiousness.map(transcribe);
+            openness = openness.map(transcribe);
+            altruism = altruism.map(transcribe);       
+            
+          }
+                
+          function displayScore(element, elArr, start, end){     
+                var tmp = elArr.slice(start, end); 
+                var sum = tmp.reduce(sumAll);        
+                console.log(tmp)                
+                avg = (sum/tmp.length).toFixed(2);
+                
+                console.log(avg)
+                $(element).text($(element).text()+avg);
+                
+
+          }
 
         </script>
 </body>

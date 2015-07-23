@@ -11,6 +11,20 @@
 
 }
 
+.a-block{
+	display: block;
+	width: 80%;
+
+	padding-left: 10%;
+	text-align: left;
+
+	
+	border-style: solid;
+	border-color: black;
+	border-width: 1px;
+	border-radius: 60px;
+}
+
 .c-block{
 
 	background-color: inherit;
